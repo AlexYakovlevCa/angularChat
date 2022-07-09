@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
-const chatRoomRoutes = require('./api/chatRoom/chatRoom.routes')
+const chatRoomRoutes = require('./api/chat-room/chatRoom.routes')
 const {setupSocketAPI} = require('./services/socket.service')
 
 // routes
