@@ -32,7 +32,7 @@ function setupSocketAPI(http) {
         socket.on('user-watch', userId => {
             logger.info(`user-watch from socket [id: ${socket.id}], on user ${userId}`)
             socket.join('watching:' + userId)
-            
+
         })
         socket.on('set-user-socket', userId => {
             logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
@@ -45,20 +45,19 @@ function setupSocketAPI(http) {
         socket.on('join-room', (roomId) => {
             socket.join(roomId)
             socket.room = roomId // BAD PRACTICE !
-            console.log('JOINED ROOM '+roomId)
+            console.log('JOINED ROOM ' + roomId)
         })
-        socket.on('store-candidate',(data)=>{
-            gIo.to(socket.room).emit('got-candidate',data)
+        socket.on('store-candidate', (data) => {
+            gIo.to(socket.room).emit('got-candidate', data)
         })
-        socket.on('store-offer',(data)=>{socket.to(socket.room).emit('got-offer',data)})
-        socket.on('store-answer',(data)=>{socket.to(socket.room).emit('got-answer',data)})
+        socket.on('store-offer', (data) => { socket.to(socket.room).emit('got-offer', data) })
+        socket.on('store-answer', (data) => { socket.to(socket.room).emit('got-answer', data) })
         socket.on('disconnect', socket => {
         })
-        socket.on('send-user-details',(data)=>{
-            const {roomId,userId} = data
+        socket.on('send-user-details', (data) => {
+            const { roomId, userId } = data
             console.log(data)
-            gIo.to(roomId).emit('get-user-details',userId)
-            // socket.to(roomId).emit('get-user-details',userId)
+            gIo.to(roomId).emit('get-user-details', userId)
         })
     })
 }
@@ -74,7 +73,7 @@ async function emitToUser({ type, data, userId }) {
     if (socket) {
         logger.info(`Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
         socket.emit(type, data)
-    }else {
+    } else {
         logger.info(`No active socket for user: ${userId}`)
         // _printSockets()
     }
@@ -124,9 +123,9 @@ module.exports = {
     // set up the sockets service and define the API
     setupSocketAPI,
     // emit to everyone / everyone in a specific room (label)
-    emitTo, 
+    emitTo,
     // emit to a specific user (if currently active in system)
-    emitToUser, 
+    emitToUser,
     // Send to all sockets BUT not the current socket - if found
     // (otherwise broadcast to a room / to all)
     broadcast,
