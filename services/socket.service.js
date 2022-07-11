@@ -51,6 +51,7 @@ function setupSocketAPI(http) {
             gIo.to(socket.room).emit('got-candidate', data)
         })
         socket.on('store-offer', (data) => { socket.to(socket.room).emit('got-offer', data) })
+        socket.on('re-store-offer', (data) => { socket.to(socket.room).emit('re-got-offer', data) })
         socket.on('store-answer', (data) => { socket.to(socket.room).emit('got-answer', data) })
         socket.on('disconnect', socket => {
         })
