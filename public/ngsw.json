@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1657615376114,
+  "timestamp": 1658087507172,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.f2e6f191d2476896.js",
+        "/main.3365a24392243043.js",
         "/manifest.webmanifest",
         "/polyfills.8a87cc4cf5f15e01.js",
         "/runtime.00f2321cc25b4dba.js",
@@ -36,7 +36,17 @@
         "/assets/icons/icon-384x384.png",
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
-        "/assets/icons/icon-96x96.png"
+        "/assets/icons/icon-96x96.png",
+        "/assets/imgs/black-camera.svg",
+        "/assets/imgs/mic.svg",
+        "/assets/imgs/phone.svg",
+        "/assets/imgs/video.svg",
+        "/assets/imgs/white-camera.svg",
+        "/black-camera.9a248271a7b2219a.svg",
+        "/mic.eb8d5d815e1b60bf.svg",
+        "/phone.2e65e9e965d68c57.svg",
+        "/video.36a80135a8589e04.svg",
+        "/white-camera.4bb61dd03d131ea2.svg"
       ],
       "patterns": []
     }
@@ -51,13 +61,23 @@
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/imgs/black-camera.svg": "1818ea55432557adc566cc38803ad1c957bd5338",
+    "/assets/imgs/mic.svg": "8ed004deb36f7e825291fce2c677a713bfe0b385",
+    "/assets/imgs/phone.svg": "93b767b9d7f9c034ed98a7f5a1f18f2edd995619",
+    "/assets/imgs/video.svg": "33a731f6af36fc1c26bb8713cab2a2654d316e0b",
+    "/assets/imgs/white-camera.svg": "4447197ef5fc08e500fa220137409e09780811eb",
+    "/black-camera.9a248271a7b2219a.svg": "1818ea55432557adc566cc38803ad1c957bd5338",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "5a8c7a0e24735bbda72ae6a06756250a08bfe8ec",
-    "/main.f2e6f191d2476896.js": "a42b049079de48765001c555f0d8797746b21f02",
+    "/index.html": "0357639a816647b2916f44d67dfc7d64d3e42b72",
+    "/main.3365a24392243043.js": "01e0af9f34d82bb37e82c06ab0a41e45b4ddedbd",
     "/manifest.webmanifest": "c6c5150b5df82510f1d0d5c0d7d2593e9351ff7e",
+    "/mic.eb8d5d815e1b60bf.svg": "8ed004deb36f7e825291fce2c677a713bfe0b385",
+    "/phone.2e65e9e965d68c57.svg": "93b767b9d7f9c034ed98a7f5a1f18f2edd995619",
     "/polyfills.8a87cc4cf5f15e01.js": "ba62b31de5c767a3b035972985ad1e123f3c46af",
     "/runtime.00f2321cc25b4dba.js": "583f8b8abc259f8332082e94764353bbc36535b9",
-    "/styles.ef46db3751d8e999.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "/styles.ef46db3751d8e999.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "/video.36a80135a8589e04.svg": "33a731f6af36fc1c26bb8713cab2a2654d316e0b",
+    "/white-camera.4bb61dd03d131ea2.svg": "4447197ef5fc08e500fa220137409e09780811eb"
   },
   "navigationUrls": [
     {
