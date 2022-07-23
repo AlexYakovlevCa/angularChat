@@ -2,12 +2,13 @@
 const dbService = require('../../services/db.service')
 const logger = require('../../services/logger.service')
 const chatRoomService = require('../chat-room/chatRoom.service')
-const {ObjectId} = require('mongodb')
+const authService = require('../auth/auth.service')
+const { ObjectId } = require('mongodb')
 
 module.exports = {
     query,
     getById,
-    getByUsername,
+    getByPhoneNum,
     remove,
     update,
     add
@@ -21,8 +22,6 @@ async function query(filterBy = {}) {
         users = users.map(user => {
             delete user.password
             user.createdAt = ObjectId(user._id).getTimestamp()
-            // Returning fake fresh data
-            // user.createdAt = Date.now() - (1000 * 60 * 60 * 24 * 3) // 3 days ago
             return user
         })
         return users
@@ -36,27 +35,27 @@ async function getById(userId) {
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ _id: ObjectId(userId) })
-        delete user.password
-
         user.givenChatRooms = await chatRoomService.query({ byUserId: ObjectId(user._id) })
-        user.givenChatRooms = user.givenChatRooms.map(chatRoom => {
-            delete chatRoom.byUser
-            return chatRoom
-        })
-
+            .map(chatRoom => {
+                delete chatRoom.byUser
+                return chatRoom
+            })
         return user
     } catch (err) {
         logger.error(`while finding user ${userId}`, err)
         throw err
     }
 }
-async function getByUsername(username) {
+async function getByPhoneNum(phoneNum) {
     try {
         const collection = await dbService.getCollection('user')
-        const user = await collection.findOne({ username })
+        const user = await collection.findOne({ phoneNum })
+        // user.givenChatRooms = await chatRoomService.query({ byUserId: ObjectId(user._id) })
+
+        //NEED TO FIX THE BUGS
         return user
     } catch (err) {
-        logger.error(`while finding user ${username}`, err)
+        logger.error(`while finding user with phone number ${phoneNum}`, err)
         throw err
     }
 }
@@ -73,11 +72,12 @@ async function remove(userId) {
 
 async function update(user) {
     try {
-        // peek only updatable properties
         const userToSave = {
-            _id: ObjectId(user._id), // needed for the returnd obj
-            fullname: user.fullname,
-            score: user.score,
+            _id: ObjectId(user._id), // needed for the returned obj
+            userName: user.userName,
+            phoneNum: user.phoneNum,
+            token: authService.signJwt(user)
+
         }
         const collection = await dbService.getCollection('user')
         await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
@@ -90,17 +90,9 @@ async function update(user) {
 
 async function add(user) {
     try {
-        // peek only updatable fields!
-        const userToAdd = {
-            username: user.username,
-            password: user.password,
-            fullname: user.fullname,
-            imgUrl: user.imgUrl,
-            score: 100
-        }
         const collection = await dbService.getCollection('user')
-        await collection.insertOne(userToAdd)
-        return userToAdd
+        await collection.insertOne(user)
+        return user
     } catch (err) {
         logger.error('cannot insert user', err)
         throw err
@@ -116,7 +108,7 @@ function _buildCriteria(filterBy) {
                 username: txtCriteria
             },
             {
-                fullname: txtCriteria
+                userName: txtCriteria
             }
         ]
     }
