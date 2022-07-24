@@ -13,7 +13,6 @@ async function authenticate(req, res) {
         }
         if (!user && phoneNum) {
             user = await authService.login((phoneNum) ? phoneNum : credentials.phoneNum)
-            console.log('IM LOGGING INTO ', phoneNum)
             if (user) authService.signJwt(user)
             if (!user) {
                 credentials.token = authService.signJwt(credentials)
@@ -22,7 +21,6 @@ async function authenticate(req, res) {
             if (user) res.cookie('accessToken', authService.signJwt(user))
         }
         // logger.info('User login: ', user)
-        console.log(user)
         res.json(user)
     } catch (err) {
         // logger.error('Failed to authenticate ' + err)
