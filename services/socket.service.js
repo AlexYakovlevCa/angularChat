@@ -60,7 +60,6 @@ function setupSocketAPI(http) {
         socket.on('disconnect', socket => {
         })
         socket.on('send-user-details', ({deviceId, phoneNum}) => {
-            console.log(deviceId,'deviceId', phoneNum,'phoneNum FROM SEND USER')
             gIo.to(deviceId).emit('get-user-details', phoneNum)
         })
     })
