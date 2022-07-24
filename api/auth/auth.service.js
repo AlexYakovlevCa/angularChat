@@ -19,7 +19,6 @@ async function signup(credentials) {
 
 
 function signJwt(user) {
-    console.log('USER')
     return jwt.sign(user, jwtSecret)
 }
 
@@ -27,11 +26,9 @@ function verifyJwt(token) {
     try {
         const user = jwt.verify(token, jwtSecret)
         return user
-
     } catch (err) {
-        // console.log('Invalid login token')
+        return null
     }
-    return null
 }
 
 

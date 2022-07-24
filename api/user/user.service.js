@@ -50,6 +50,7 @@ async function getByPhoneNum(phoneNum) {
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ phoneNum })
+        console.log(phoneNum,'GETBYPHONE')
         // user.givenChatRooms = await chatRoomService.query({ byUserId: ObjectId(user._id) })
 
         //NEED TO FIX THE BUGS

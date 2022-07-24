@@ -9,18 +9,20 @@ async function authenticate(req, res) {
     let user
     try {
         if (accessToken) {
-            user = authService.verifyJwt()
+            user = authService.verifyJwt(accessToken)
         }
-        if (!user) {
+        if (!user && phoneNum) {
             user = await authService.login((phoneNum) ? phoneNum : credentials.phoneNum)
+            console.log('IM LOGGING INTO ', phoneNum)
             if (user) authService.signJwt(user)
-            if (!user && phoneNum) {
+            if (!user) {
                 credentials.token = authService.signJwt(credentials)
                 user = await authService.signup(credentials)
             }
             if (user) res.cookie('accessToken', authService.signJwt(user))
         }
         // logger.info('User login: ', user)
+        console.log(user)
         res.json(user)
     } catch (err) {
         // logger.error('Failed to authenticate ' + err)

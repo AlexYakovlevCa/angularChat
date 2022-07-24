@@ -45,6 +45,10 @@ function setupSocketAPI(http) {
         socket.on('join-room', (roomId) => {
             socket.join(roomId)
             socket.room = roomId // BAD PRACTICE !
+            //May be a problem here because of 2 calls to join-room,
+            //If the join-room from qr-img will be fired after the first
+            //one maybe he wont be connected as well to make the connection 
+            //to the video-chat.
             console.log('JOINED ROOM ' + roomId)
         })
         socket.on('store-candidate', (data) => {
@@ -56,6 +60,7 @@ function setupSocketAPI(http) {
         socket.on('disconnect', socket => {
         })
         socket.on('send-user-details', ({deviceId, phoneNum}) => {
+            console.log(deviceId,'deviceId', phoneNum,'phoneNum FROM SEND USER')
             gIo.to(deviceId).emit('get-user-details', phoneNum)
         })
     })
