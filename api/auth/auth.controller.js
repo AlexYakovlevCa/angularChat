@@ -11,8 +11,8 @@ async function authenticate(req, res) {
         if (accessToken) {
             user = authService.verifyJwt(accessToken)
         }
-        if (!user && phoneNum) {
-            user = await authService.login((phoneNum) ? phoneNum : credentials.phoneNum)
+        if (!user && (phoneNum || typeof credentials === 'string')) {
+            user = await authService.login((phoneNum) ? phoneNum : credentials)
             if (user) authService.signJwt(user)
             if (!user) {
                 credentials.token = authService.signJwt(credentials)
