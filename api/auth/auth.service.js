@@ -6,7 +6,7 @@ const { jwtSecret } = require('../../config/index');
 async function login(phoneNum) {
     // logger.debug(`auth.service - login with phone number: ${phoneNum}`)
     const user = await userService.getByPhoneNum(phoneNum)
-    if (user) user.token = signJwt(user)
+    // if (user) user.token = signJwt(user)
     return user
 }
 

@@ -6,27 +6,20 @@ async function authenticate(req, res) {
     const credentials = req.body
     const { phoneNum } = credentials
     let { accessToken } = req.cookies
-    console.log(credentials, phoneNum,'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+    // console.log(credentials, phoneNum,'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     let user
     try {
-        console.log(1)
         if (accessToken) {
             user = authService.verifyJwt(accessToken)
-            console.log(2)
         }
         if (!user && phoneNum) {
-            console.log(3)
             user = await authService.login(phoneNum)
-            if (user) authService.signJwt(user)
-            console.log(4)
+            // if (user) authService.signJwt(user)
             if (!user) {
-                console.log(5)
                 credentials.token = authService.signJwt(credentials)
                 user = await authService.signup(credentials)
-                console.log(6)
             }
             if (user) res.cookie('accessToken', authService.signJwt(user))
-            console.log(7)
         }
         // logger.info('User login: ', user)
         res.json(user)
