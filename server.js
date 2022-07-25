@@ -22,12 +22,14 @@ if (process.env.NODE_ENV === 'production') {
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const chatRoomRoutes = require('./api/chat-room/chatRoom.routes')
+const contactRoutes = require('./api/contact/contact.routes')
 const {setupSocketAPI} = require('./services/socket.service')
 
 // routes
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/chatRoom', chatRoomRoutes)
+app.use('/api/contact', contactRoutes)
 setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
@@ -41,5 +43,5 @@ app.get('/**', (req, res) => {
 const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
 http.listen(port, () => {
-    logger.info('Server is running on port: ' + port)
+    // logger.info('Server is running on port: ' + port)
 })

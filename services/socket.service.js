@@ -9,9 +9,9 @@ function setupSocketAPI(http) {
         }
     })
     gIo.on('connection', socket => {
-        logger.info(`New connected socket [id: ${socket.id}]`)
+        // logger.info(`New connected socket [id: ${socket.id}]`)
         socket.on('disconnect', socket => {
-            logger.info(`Socket disconnected [id: ${socket.id}]`)
+            // logger.info(`Socket disconnected [id: ${socket.id}]`)
         })
         socket.on('chat-set-topic', topic => {
             if (socket.myTopic === topic) return
@@ -45,6 +45,10 @@ function setupSocketAPI(http) {
         socket.on('join-room', (roomId) => {
             socket.join(roomId)
             socket.room = roomId // BAD PRACTICE !
+            //May be a problem here because of 2 calls to join-room,
+            //If the join-room from qr-img will be fired after the first
+            //one maybe he wont be connected as well to make the connection 
+            //to the video-chat.
             console.log('JOINED ROOM ' + roomId)
         })
         socket.on('store-candidate', (data) => {
@@ -55,10 +59,8 @@ function setupSocketAPI(http) {
         socket.on('store-answer', (data) => { socket.to(socket.room).emit('got-answer', data) })
         socket.on('disconnect', socket => {
         })
-        socket.on('send-user-details', (data) => {
-            const { roomId, userId } = data
-            console.log(data)
-            gIo.to(roomId).emit('get-user-details', userId)
+        socket.on('send-user-details', ({deviceId, phoneNum}) => {
+            gIo.to(deviceId).emit('get-user-details', phoneNum)
         })
     })
 }
