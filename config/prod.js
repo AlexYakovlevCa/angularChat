@@ -1,4 +1,6 @@
 module.exports = {
-  jwtSecret: 'ak5b5o1o2O12',
-  dbURL: 'mongodb+srv://michaelalex:8OSabcyVcNtUHjE7@cluster0.kyade.mongodb.net/?retryWrites=true&w=majority ',
+  accountSid: process.env.TWILIO_ACCOUNT_SID,
+  authToken : process.env.TWILIO_AUTH_TOKEN,
+  jwtSecret: process.env.JWT_SECRET,
+  dbURL: process.env.MONGO_URL
 }

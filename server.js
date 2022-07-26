@@ -3,6 +3,8 @@ const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 
+
+
 const app = express()
 const http = require('http').createServer(app)
 
@@ -21,6 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
+const verificationRoutes = require('./api/verification/verification.routes')
 const chatRoomRoutes = require('./api/chat-room/chatRoom.routes')
 const contactRoutes = require('./api/contact/contact.routes')
 const {setupSocketAPI} = require('./services/socket.service')
@@ -28,6 +31,7 @@ const {setupSocketAPI} = require('./services/socket.service')
 // routes
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/verify', verificationRoutes)
 app.use('/api/chatRoom', chatRoomRoutes)
 app.use('/api/contact', contactRoutes)
 setupSocketAPI(http)

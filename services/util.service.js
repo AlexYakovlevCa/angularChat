@@ -8,6 +8,9 @@ function makeId(length = 5) {
   return txt
 }
 
+function getPhoneNumString(phoneNum) {
+ return`+972${phoneNum.substring(1)}`
+}
 function debounce(func, timeout = 300) {
   let timer
   return (...args) => {
@@ -96,7 +99,6 @@ function timeAgo(ms = new Date()) {
     }
   }
 }
-
 module.exports = {
   makeId,
   getRandomInt,
@@ -104,4 +106,5 @@ module.exports = {
   generateRandomName,
   timeAgo,
   generateRandomImg,
+  getPhoneNumString
 }
