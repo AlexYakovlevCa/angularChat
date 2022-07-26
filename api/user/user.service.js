@@ -35,11 +35,11 @@ async function getById(userId) {
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ _id: ObjectId(userId) })
-        user.givenChatRooms = await chatRoomService.query({ byUserId: ObjectId(user._id) })
-            .map(chatRoom => {
-                delete chatRoom.byUser
-                return chatRoom
-            })
+        // user.givenChatRooms = await chatRoomService.query({ byUserId: ObjectId(user._id) })
+        //     .map(chatRoom => {
+        //         delete chatRoom.byUser
+        //         return chatRoom
+        //     })
         return user
     } catch (err) {
         logger.error(`while finding user ${userId}`, err)
@@ -50,7 +50,7 @@ async function getByPhoneNum(phoneNum) {
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ phoneNum })
-        console.log(phoneNum,'GETBYPHONE')
+        console.log(phoneNum, 'GETBYPHONE')
         // user.givenChatRooms = await chatRoomService.query({ byUserId: ObjectId(user._id) })
 
         //NEED TO FIX THE BUGS
@@ -73,16 +73,11 @@ async function remove(userId) {
 
 async function update(user) {
     try {
-        const userToSave = {
-            _id: ObjectId(user._id), // needed for the returned obj
-            userName: user.userName,
-            phoneNum: user.phoneNum,
-            token: authService.signJwt(user)
+        user._id = ObjectId(user._id)
 
-        }
         const collection = await dbService.getCollection('user')
-        await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
-        return userToSave
+        await collection.updateOne({ _id: user._id }, { $set: user })
+        return user
     } catch (err) {
         logger.error(`cannot update user ${user._id}`, err)
         throw err
