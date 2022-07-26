@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1658734227297,
+  "timestamp": 1658815257576,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.0b75aba955e9d9d5.js",
+        "/main.3c9aaf3421317551.js",
         "/manifest.webmanifest",
         "/polyfills.8a87cc4cf5f15e01.js",
         "/runtime.00f2321cc25b4dba.js",
-        "/styles.ef46db3751d8e999.css"
+        "/styles.67d4235569b43c7b.css"
       ],
       "patterns": []
     },
@@ -40,11 +40,13 @@
         "/assets/imgs/background1.jpg",
         "/assets/imgs/background2.jpg",
         "/assets/imgs/black-camera.svg",
+        "/assets/imgs/logo.png",
         "/assets/imgs/mic.svg",
         "/assets/imgs/phone.svg",
         "/assets/imgs/video.svg",
         "/assets/imgs/white-camera.svg",
         "/black-camera.9a248271a7b2219a.svg",
+        "/logo.4e3d993f7ead4c17.png",
         "/mic.eb8d5d815e1b60bf.svg",
         "/phone.2e65e9e965d68c57.svg",
         "/video.36a80135a8589e04.svg",
@@ -66,20 +68,22 @@
     "/assets/imgs/background1.jpg": "055af4f230a44d2b4b9d72b31f610ead0c748adf",
     "/assets/imgs/background2.jpg": "21927b3cf62f30e023cc2f16f888484f78b85bda",
     "/assets/imgs/black-camera.svg": "1818ea55432557adc566cc38803ad1c957bd5338",
+    "/assets/imgs/logo.png": "448da91d768040e8537ecbd8f873b7c48d2bb92d",
     "/assets/imgs/mic.svg": "8ed004deb36f7e825291fce2c677a713bfe0b385",
     "/assets/imgs/phone.svg": "93b767b9d7f9c034ed98a7f5a1f18f2edd995619",
     "/assets/imgs/video.svg": "33a731f6af36fc1c26bb8713cab2a2654d316e0b",
     "/assets/imgs/white-camera.svg": "4447197ef5fc08e500fa220137409e09780811eb",
     "/black-camera.9a248271a7b2219a.svg": "1818ea55432557adc566cc38803ad1c957bd5338",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "0e100dc6ad4003154907f21bc100fe735c066f9d",
-    "/main.0b75aba955e9d9d5.js": "4799781866497fd1d5f5fcecb5d69337ba0a23ff",
+    "/index.html": "6826eaec5bbfe663313fa01728bdc1e3b115231e",
+    "/logo.4e3d993f7ead4c17.png": "448da91d768040e8537ecbd8f873b7c48d2bb92d",
+    "/main.3c9aaf3421317551.js": "ff082134ec9575bbd77ad6a80555bdf4e13485b4",
     "/manifest.webmanifest": "c6c5150b5df82510f1d0d5c0d7d2593e9351ff7e",
     "/mic.eb8d5d815e1b60bf.svg": "8ed004deb36f7e825291fce2c677a713bfe0b385",
     "/phone.2e65e9e965d68c57.svg": "93b767b9d7f9c034ed98a7f5a1f18f2edd995619",
     "/polyfills.8a87cc4cf5f15e01.js": "ba62b31de5c767a3b035972985ad1e123f3c46af",
     "/runtime.00f2321cc25b4dba.js": "583f8b8abc259f8332082e94764353bbc36535b9",
-    "/styles.ef46db3751d8e999.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "/styles.67d4235569b43c7b.css": "c5a1e696c338023483bdd2629de5b649db57c083",
     "/video.36a80135a8589e04.svg": "33a731f6af36fc1c26bb8713cab2a2654d316e0b",
     "/white-camera.4bb61dd03d131ea2.svg": "4447197ef5fc08e500fa220137409e09780811eb"
   },
