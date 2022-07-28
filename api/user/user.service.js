@@ -11,7 +11,7 @@ module.exports = {
     getByPhoneNum,
     remove,
     update,
-    add
+    add,
 }
 
 async function query(filterBy = {}) {
@@ -46,6 +46,7 @@ async function getById(userId) {
         throw err
     }
 }
+
 async function getByPhoneNum(phoneNum) {
     try {
         const collection = await dbService.getCollection('user')

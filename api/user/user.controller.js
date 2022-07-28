@@ -42,7 +42,7 @@ async function updateUser(req, res) {
         const user = req.body
         const savedUser = await userService.update(user)
         const updatedToken = authService.signJwt(savedUser)
-        res.cookie('accessToken',updatedToken)
+        res.cookie('accessToken', updatedToken)
         res.send(savedUser)
     } catch (err) {
         logger.error('Failed to update user', err)
