@@ -7,7 +7,15 @@ function makeId(length = 5) {
   }
   return txt
 }
-
+function generateVcode(length = 6) {
+  var vCode = ''
+  var numbersStr =
+    '0123456789'
+  for (let i = 0; i < length; i++) {
+    vCode += numbersStr.charAt(Math.floor(Math.random() * numbersStr.length))
+  }
+  return vCode
+}
 function getPhoneNumString(phoneNum) {
  return`+972${phoneNum.substring(1)}`
 }
@@ -106,5 +114,6 @@ module.exports = {
   generateRandomName,
   timeAgo,
   generateRandomImg,
-  getPhoneNumString
+  getPhoneNumString,
+  generateVcode
 }

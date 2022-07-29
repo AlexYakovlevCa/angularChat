@@ -1,4 +1,5 @@
 const userService = require('./user.service')
+const authService = require('../auth/auth.service')
 // const socketService = require('../../services/socket.service')
 const logger = require('../../services/logger.service')
 
@@ -40,6 +41,8 @@ async function updateUser(req, res) {
     try {
         const user = req.body
         const savedUser = await userService.update(user)
+        const updatedToken = authService.signJwt(savedUser)
+        res.cookie('accessToken', updatedToken)
         res.send(savedUser)
     } catch (err) {
         logger.error('Failed to update user', err)

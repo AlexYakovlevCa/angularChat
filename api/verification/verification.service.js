@@ -13,7 +13,7 @@ const client = require('twilio')(accountSid, authToken, {
 
 async function sendVerificationRequest(phoneNum) {
     const reciverPhone = utilService.getPhoneNumString(phoneNum)
-    const userVerificationCode = utilService.makeId()
+    const userVerificationCode = utilService.generateVcode()
     console.log('hey')
     try {
 

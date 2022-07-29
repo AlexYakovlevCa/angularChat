@@ -24,7 +24,7 @@ async function matchVerification(req, res) {
     const {vCode,phoneNum} = req.body
     console.log(vCode,phoneNum, 'inside verificationMatch')
     try{
-        const verifiedToken = await verificationService.matchVerificationToken(vCode,phoneNum)
+        const verifiedToken =  verificationService.matchVerificationToken(vCode,phoneNum)
         res.send(verifiedToken)
 
     }catch(e){
