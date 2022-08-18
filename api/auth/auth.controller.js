@@ -11,23 +11,25 @@ async function authenticate(req, res) {
     try {
         if (accessToken) {
             user = authService.verifyJwt(accessToken)
+            if (user) user = await authService.login(user.phoneNum)
         }
         if (!user && phoneNum) {
             user = await authService.login(phoneNum)
             // if (user) authService.signJwt(user)
             if (!user) {
-                credentials.token = authService.signJwt(credentials)
                 user = await authService.signup(credentials)
             }
-            if (user) res.cookie('accessToken', authService.signJwt(user))
+            res.cookie('accessToken', authService.signJwt(user),{expires:new Date(Date.now()+99999999999999999999999999999999999)})
         }
         // logger.info('User login: ', user)
         res.json(user)
     } catch (err) {
         // logger.error('Failed to authenticate ' + err)
-        res.status(401).send({ err: 'Failed to authenticate' })
+        res.status(401).send({ err: 'Failed to authenticate now' })
     }
 }
+const arr = [1,2,3]
+arr.find(({num},idx)=>{num === 1} /* true for first loop */)
 
 // async function login(req, res) {
 //     const { username, password } = req.body

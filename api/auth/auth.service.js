@@ -11,9 +11,9 @@ async function login(phoneNum) {
 }
 
 async function signup(credentials) {
-    const { phoneNum, userName } = credentials
+    const { phoneNum } = credentials
     // logger.debug(`auth.service - signup with phoneNum: ${phoneNum}, userName: ${userName}`)
-    if (!phoneNum || !userName) return Promise.reject('Missing required signup information')
+    if (!phoneNum) return Promise.reject('Missing required signup information')
     return userService.add(credentials)
 }
 
